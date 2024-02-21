@@ -6,20 +6,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="product",schema = "public")
+@Table(name="order",schema = "public")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Product {
+public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private Float price;
-    private String explanation;
-    private String base64Image;
+    private int quantity;
 
     @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category category;
+    @JoinColumn(name = "user_id")
+    private User user_id;
 }
