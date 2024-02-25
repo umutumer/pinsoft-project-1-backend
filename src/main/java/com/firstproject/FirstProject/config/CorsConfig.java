@@ -1,4 +1,4 @@
-package com.firstproject.FirstProject.config;
+package com.firstproject.FirstProject.Config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

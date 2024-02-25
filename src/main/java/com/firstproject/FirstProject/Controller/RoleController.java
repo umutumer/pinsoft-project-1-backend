@@ -2,6 +2,7 @@ package com.firstproject.FirstProject.Controller;
 
 import com.firstproject.FirstProject.Entity.Role;
 import com.firstproject.FirstProject.Service.RoleService;
+import jakarta.annotation.security.PermitAll;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,17 +13,19 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin
 public class RoleController {
     @Autowired
     private RoleService roleService;
 
     @GetMapping("/roles")
+    @PermitAll
     public ResponseEntity<List<Role>> getAllRoles() {
         List<Role> roles = roleService.getAllRoles();
         return new ResponseEntity<>(roles, HttpStatus.OK);
     }
     @GetMapping("/roles/{id}")
+    @PermitAll
     public ResponseEntity<Role> getRoleById(@PathVariable Long id) {
         Optional<Role> roleOptional = roleService.getRoleById(id);
         if (roleOptional.isPresent()) {

@@ -1,20 +1,20 @@
 package com.firstproject.FirstProject.Controller;
 
-import com.firstproject.FirstProject.Entity.Category;
+import com.firstproject.FirstProject.DTO.OrderDto;
 import com.firstproject.FirstProject.Entity.Order;
-import com.firstproject.FirstProject.Entity.Product;
 import com.firstproject.FirstProject.Service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin
 public class OrderController {
     @Autowired
     private OrderService orderService;
@@ -32,5 +32,9 @@ public class OrderController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+    @PostMapping("/orders")
+    public void addProduct(@RequestBody OrderDto orderDto) throws IOException {
+        orderService.addOrder(orderDto);
     }
 }

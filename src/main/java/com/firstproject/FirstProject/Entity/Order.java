@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="order",schema = "public")
+@Table(name = "order")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,10 +15,10 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private Float price;
+    private float price;
     private int quantity;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user_id;
 }
